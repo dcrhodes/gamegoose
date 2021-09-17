@@ -1,0 +1,54 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<h3 class="py-3 my-0 fs-1 bg-light"><%= title %></h3>
+
+<% if (results) { %>
+
+  <main class="bg-light">
+    <div class="container py-5 px-3">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g5 px-sm-5 px-4">
+        <% results.forEach(game => { %>
+          <div class="col">
+            <div class="card bg-dark shadow-sm mt-3">
+              <% if (game.background_image) { %>
+                <img
+                  class="card-img-top"
+                  src="<%= game.background_image %>"
+                  alt="<%= game.background_image %>'s image"
+                  width="100%"
+                  height="170"
+                />
+              <% } else {%>
+                <img
+                  class="card-img-top"
+                  src="/images/icons/user.png"
+                  alt="A placeholder avatar"
+                  width="100%"
+                  height="170"
+                />
+              <% } %>
+              <div class="card-body">
+                <p class="card-title fs-4 text-light"><%= game.name %></p>
+                <p class="card-text fs-5 text-light">Released: <%= game.released %></p>
+                <p class="card-text mb-1 fs-5 text-light">Platforms:</p>
+                <ul>
+                  <% game.platforms?.forEach(p => { %>
+                    <li class="card-text fs-6 text-light"><%= p.platform.name %></li>
+                  <% }) %>
+                </ul>
+                <p class="card-text fs-6 text-light">
+                  Metacritic Score: <%= game.metacritic ? game.metacritic : 'N/A' %>
+                </p>
+                <%# This is where our game show UI will go %> 
+                <a href="/games/<%= game.id %>" class="btn btn-primary">Details</a>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </main>
+<% } %> 
+
+<%- include('../partials/footer') %>
