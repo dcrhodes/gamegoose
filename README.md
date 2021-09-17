@@ -1,8 +1,1 @@
-# GAMEGOOOOOOOSE
-
-# To pull the most recent code:
-
-```bash
-git fetch --all
-git reset --hard origin/main
-```
+This application was a lecture-led MEN (MongoDB, Express,  Node.JS) stack educational project completed in General Assembly's Software Engineer Immersive bootcamp course.
